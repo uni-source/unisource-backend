@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FeignClientConfig {
-    private final TokenExtractor tokenProvider; // or TokenExtractor
+    private final TokenExtractor tokenProvider;
 
     @Autowired
     public FeignClientConfig(TokenExtractor tokenProvider) {
