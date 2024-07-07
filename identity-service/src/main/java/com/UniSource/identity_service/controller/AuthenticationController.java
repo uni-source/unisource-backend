@@ -40,7 +40,7 @@ public class AuthenticationController {
             ResponseDTO<User> response = new ResponseDTO<>(false, null, e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         } catch (Exception e) {
-            ResponseDTO<User> response = new ResponseDTO<>(false, null, "An unexpected error occurred");
+            ResponseDTO<User> response = new ResponseDTO<>(false, null, e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

@@ -27,6 +27,9 @@ public class AuthenticationService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     public User saveUser(User user) {
+        if (repository.existsByEmail(user.getEmail())) {
+            throw new CustomException("Email is already taken");
+        }
         return repository.save(user);
     }
 
