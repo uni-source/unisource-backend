@@ -1,6 +1,5 @@
-package com.UniSource.student_service;
+package com.UniSource.student_service.config;
 
-import com.UniSource.student_service.client.TokenExtractor;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

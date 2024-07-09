@@ -1,5 +1,6 @@
 package com.UniSource.identity_service.service;
 
+import com.UniSource.identity_service.client.StudentClient;
 import com.UniSource.identity_service.config.JwtService;
 import com.UniSource.identity_service.dto.LoginDTO;
 import com.UniSource.identity_service.dto.LoginResponseDTO;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -23,14 +25,25 @@ public class AuthenticationService {
     private final UserCredentialRepository repository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-
+    private final StudentClient studentClient;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     public User saveUser(User user) {
         if (repository.existsByEmail(user.getEmail())) {
             throw new CustomException("Email is already taken");
         }
-        return repository.save(user);
+        User newUser =repository.save(user);
+        String jwtToken = jwtService.generateToken(newUser);
+        if (Objects.equals("STUDENT", newUser.getRole().toString())) {
+            try{
+                studentClient.createStudent(newUser.getId(), "Bearer " + jwtToken);
+            }catch (Exception e){
+                throw new CustomException(e.getMessage());
+            }
+
+        }
+        return newUser;
     }
 
     public LoginResponseDTO login(LoginDTO request) {
