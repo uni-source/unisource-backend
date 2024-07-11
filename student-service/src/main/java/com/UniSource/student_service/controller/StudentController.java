@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/student")
 @RequiredArgsConstructor
 public class StudentController {
+
     private final StudentService service;
     @PostMapping
     public ResponseEntity<ResponseDTO<Student>> createStudent(
-            @RequestBody createStudentDTO request
-    ) {
+            @RequestBody createStudentDTO request) {
         try{
             Student newStudent=service.saveStudent(Student.build(0, false, 0, "", request.getIdentityId()));
             ResponseDTO<Student> response = new ResponseDTO<>(true, newStudent, "Student registered is successfully");

@@ -2,10 +2,7 @@ package com.UniSource.identity_service.service;
 
 import com.UniSource.identity_service.client.StudentClient;
 import com.UniSource.identity_service.config.JwtService;
-import com.UniSource.identity_service.dto.LoginDTO;
-import com.UniSource.identity_service.dto.LoginResponseDTO;
-import com.UniSource.identity_service.dto.ResetPasswordRequestDTO;
-import com.UniSource.identity_service.dto.UpdateUserRequestDTO;
+import com.UniSource.identity_service.dto.*;
 import com.UniSource.identity_service.entity.User;
 import com.UniSource.identity_service.exception.CustomException;
 import com.UniSource.identity_service.repository.UserCredentialRepository;
@@ -33,15 +30,15 @@ public class AuthenticationService {
         if (repository.existsByEmail(user.getEmail())) {
             throw new CustomException("Email is already taken");
         }
-        User newUser =repository.save(user);
+        User newUser = repository.save(user);
         String jwtToken = jwtService.generateToken(newUser);
-        if (Objects.equals("STUDENT", newUser.getRole().toString())) {
-            try{
-                studentClient.createStudent(newUser.getId(), "Bearer " + jwtToken);
-            }catch (Exception e){
+        if ("STUDENT".equals(newUser.getRole().toString())) {
+            try {
+                createStudentDTO createStudentDTO = new createStudentDTO(newUser.getId());
+                studentClient.createStudent(createStudentDTO, "Bearer " + jwtToken);
+            } catch (Exception e) {
                 throw new CustomException(e.getMessage());
             }
-
         }
         return newUser;
     }
