@@ -2,10 +2,7 @@ package com.UniSource.identity_service.service;
 
 import com.UniSource.identity_service.client.StudentClient;
 import com.UniSource.identity_service.config.JwtService;
-import com.UniSource.identity_service.dto.LoginDTO;
-import com.UniSource.identity_service.dto.LoginResponseDTO;
-import com.UniSource.identity_service.dto.ResetPasswordRequestDTO;
-import com.UniSource.identity_service.dto.UpdateUserRequestDTO;
+import com.UniSource.identity_service.dto.*;
 import com.UniSource.identity_service.entity.User;
 import com.UniSource.identity_service.exception.CustomException;
 import com.UniSource.identity_service.repository.UserCredentialRepository;
@@ -36,17 +33,13 @@ public class AuthenticationService {
         User newUser = repository.save(user);
         String jwtToken = jwtService.generateToken(newUser);
 
+
         if ("STUDENT".equals(newUser.getRole().toString())) {
             try {
-                // Log the request details for debugging
-                System.out.println("Creating student with ID: " + newUser.getId());
-                System.out.println("JWT Token: " + jwtToken);
-
-                // Make the request to create the student
-                studentClient.createStudent(newUser.getId(), "Bearer " + jwtToken);
+                createStudentDTO createStudentDTO = new createStudentDTO(newUser.getId());
+                studentClient.createStudent(createStudentDTO, "Bearer " + jwtToken);
             } catch (Exception e) {
-                // Log the exception details
-                e.printStackTrace();
+
                 throw new CustomException(e.getMessage());
             }
         }
