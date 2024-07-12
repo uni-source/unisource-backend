@@ -33,18 +33,27 @@ public class AuthenticationService {
         if (repository.existsByEmail(user.getEmail())) {
             throw new CustomException("Email is already taken");
         }
-        User newUser =repository.save(user);
+        User newUser = repository.save(user);
         String jwtToken = jwtService.generateToken(newUser);
-        if (Objects.equals("STUDENT", newUser.getRole().toString())) {
-            try{
+
+        if ("STUDENT".equals(newUser.getRole().toString())) {
+            try {
+                // Log the request details for debugging
+                System.out.println("Creating student with ID: " + newUser.getId());
+                System.out.println("JWT Token: " + jwtToken);
+
+                // Make the request to create the student
                 studentClient.createStudent(newUser.getId(), "Bearer " + jwtToken);
-            }catch (Exception e){
+            } catch (Exception e) {
+                // Log the exception details
+                e.printStackTrace();
                 throw new CustomException(e.getMessage());
             }
-
         }
+
         return newUser;
     }
+
 
     public LoginResponseDTO login(LoginDTO request) {
         authenticationManager.authenticate(

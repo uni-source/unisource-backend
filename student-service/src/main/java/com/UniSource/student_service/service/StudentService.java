@@ -3,6 +3,7 @@ package com.UniSource.student_service.service;
 import com.UniSource.student_service.client.IdentityClient;
 import com.UniSource.student_service.client.User;
 import com.UniSource.student_service.dto.StudentDetailsDTO;
+import com.UniSource.student_service.dto.UpdateScoreRequestDTO;
 import com.UniSource.student_service.dto.UpdateStudentRequestDTO;
 import com.UniSource.student_service.entity.Student;
 import com.UniSource.student_service.exception.CustomException;
@@ -57,5 +58,14 @@ public class StudentService {
             throw new CustomException("Error retrieving student by id: " + id, e);
         }
 
+    }
+
+    public Student UpdateScore(UpdateScoreRequestDTO request) {
+        Student student = repository.findByIdentityId(request.getIdentityId())
+                .orElseThrow(() -> new CustomException("User not found"));
+        //int score=student.getScore();
+        //score+= request.getScore();
+        student.setScore(student.getScore()+ request.getScore());
+        return repository.save(student);
     }
 }
