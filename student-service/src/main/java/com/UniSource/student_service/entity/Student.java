@@ -16,5 +16,6 @@ public class Student {
     private int score;
     private String description;
     private int identityId;
-
+    private String public_id;
+    private String public_url;
 }
