@@ -13,4 +13,7 @@ public class StudentDetailsDTO {
     private boolean isVerified;
     private int score;
     private String description;
+    private String public_id;
+    private String public_url;
+    private int identityId;
 }
