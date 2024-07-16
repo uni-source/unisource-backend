@@ -2,6 +2,7 @@ package com.UniSource.student_service.service;
 
 import com.UniSource.student_service.client.IdentityClient;
 import com.UniSource.student_service.client.User;
+import com.UniSource.student_service.dto.IsVerifyDTO;
 import com.UniSource.student_service.dto.StudentDetailsDTO;
 import com.UniSource.student_service.dto.UpdateScoreRequestDTO;
 import com.UniSource.student_service.dto.UpdateStudentRequestDTO;
@@ -43,6 +44,7 @@ public class StudentService {
                 throw new CustomException("Student not found for id: " + id);
             }
 
+
             StudentDetailsDTO result = StudentDetailsDTO.build(
                     identityResponse.get().getData().getName(),
                     identityResponse.get().getData().getEmail(),
@@ -68,4 +70,24 @@ public class StudentService {
         student.setScore(student.getScore()+ request.getScore());
         return repository.save(student);
     }
+    public Student isVerify(IsVerifyDTO request){
+        try {
+            var identityResponse = this.identityClient.getUserById(request.getAdminIdentityId());
+            if (identityResponse.isEmpty()) {
+                throw new CustomException("Identity not found for id: " + request.getAdminIdentityId());
+            }
+            if (!"ADMIN".equals(identityResponse.get().getData().getRole().toString())){
+                throw new CustomException("Unauthorized Access");
+            }
+            Student student = repository.findById(request.getStudentId())
+                    .orElseThrow(() -> new CustomException("Student not found"));
+            student.setVerified(student.isVerified());
+            return repository.save(student);
+        }
+        catch (Exception e){
+            throw new CustomException(e.getMessage());
+        }
+
+    }
 }
+

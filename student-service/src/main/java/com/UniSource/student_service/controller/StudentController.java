@@ -74,4 +74,19 @@ public class StudentController {
         }
     }
 
+    @PutMapping("/student-verify")
+    public ResponseEntity<ResponseDTO<Student>> StudentVerification(@RequestBody IsVerifyDTO request) {
+        try {
+            Student user = service.isVerify(request);
+            ResponseDTO<Student> response = new ResponseDTO<>(true, user, "Student Verified successfully");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<Student> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<Student> response = new ResponseDTO<>(false, null,  e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
 }
