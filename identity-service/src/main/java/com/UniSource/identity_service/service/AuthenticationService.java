@@ -32,16 +32,21 @@ public class AuthenticationService {
         }
         User newUser = repository.save(user);
         String jwtToken = jwtService.generateToken(newUser);
+
+
         if ("STUDENT".equals(newUser.getRole().toString())) {
             try {
                 createStudentDTO createStudentDTO = new createStudentDTO(newUser.getId());
                 studentClient.createStudent(createStudentDTO, "Bearer " + jwtToken);
             } catch (Exception e) {
+
                 throw new CustomException(e.getMessage());
             }
         }
+
         return newUser;
     }
+
 
     public LoginResponseDTO login(LoginDTO request) {
         authenticationManager.authenticate(
