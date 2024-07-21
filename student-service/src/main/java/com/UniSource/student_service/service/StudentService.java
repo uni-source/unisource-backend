@@ -55,7 +55,8 @@ public class StudentService {
                     student.get().getDescription(),
                     student.get().getPublic_id(),
                     student.get().getPublic_url(),
-                    identityResponse.get().getData().getId()
+                    identityResponse.get().getData().getId(),
+                    identityResponse.get().getData().getContact()
             );
 
             return result;
@@ -113,7 +114,8 @@ public class StudentService {
                     student.getDescription(),
                     updatedStudent.getPublic_id(),
                     updatedStudent.getPublic_url(),
-                    identityResponse.get().getData().getId()
+                    identityResponse.get().getData().getId(),
+                    identityResponse.get().getData().getContact()
             );
 
             return result;

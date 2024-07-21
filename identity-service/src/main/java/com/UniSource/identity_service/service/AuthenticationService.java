@@ -73,6 +73,7 @@ public class AuthenticationService {
                 .orElseThrow(() -> new CustomException("User not found"));
 
         user.setName(userDTO.getName());
+        user.setContact(userDTO.getContact());
         return repository.save(user);
     }
     public User RestPassword( ResetPasswordRequestDTO userDTO) {
