@@ -32,7 +32,8 @@ public class AuthenticationController {
                     request.getName(),
                     request.getEmail(),
                     request.getRole(),
-                    passwordEncoder.encode(request.getPassword())
+                    passwordEncoder.encode(request.getPassword()),
+                    ""
             ));
             ResponseDTO<User> response = new ResponseDTO<>(true, user, "User registered is successfully");
             return ResponseEntity.ok(response);

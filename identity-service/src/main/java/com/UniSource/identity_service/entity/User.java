@@ -34,6 +34,8 @@ public class User implements UserDetails {
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password should have at least 8 characters")
     private String password;
+    private String contact;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

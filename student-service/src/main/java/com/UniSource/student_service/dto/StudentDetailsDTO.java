@@ -16,4 +16,5 @@ public class StudentDetailsDTO {
     private String public_id;
     private String public_url;
     private int identityId;
+    private String contact;
 }
