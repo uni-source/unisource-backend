@@ -1,5 +1,6 @@
 package com.UniSource.identity_service.service;
 
+import com.UniSource.identity_service.client.OrganizationClient;
 import com.UniSource.identity_service.client.StudentClient;
 import com.UniSource.identity_service.config.JwtService;
 import com.UniSource.identity_service.dto.*;
@@ -23,6 +24,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final StudentClient studentClient;
+    private final OrganizationClient organizationClient;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -39,7 +41,13 @@ public class AuthenticationService {
                 createStudentDTO createStudentDTO = new createStudentDTO(newUser.getId());
                 studentClient.createStudent(createStudentDTO, "Bearer " + jwtToken);
             } catch (Exception e) {
-
+                throw new CustomException(e.getMessage());
+            }
+        }else if("ORGANIZATION".equals(newUser.getRole().toString())) {
+            try {
+                createOrganizationDTO createOrganizationDTO = new createOrganizationDTO(newUser.getId());
+                organizationClient.createOrganization( createOrganizationDTO, "Bearer " + jwtToken);
+            } catch (Exception e) {
                 throw new CustomException(e.getMessage());
             }
         }
