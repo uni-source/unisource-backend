@@ -1,7 +1,6 @@
 package com.UniSource.student_service.service;
 
 import com.UniSource.student_service.client.IdentityClient;
-import com.UniSource.student_service.client.User;
 import com.UniSource.student_service.dto.IsVerifyDTO;
 import com.UniSource.student_service.dto.StudentDetailsDTO;
 import com.UniSource.student_service.dto.UpdateScoreRequestDTO;

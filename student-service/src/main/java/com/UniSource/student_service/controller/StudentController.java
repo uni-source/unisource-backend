@@ -45,7 +45,7 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-    @PutMapping("/description")
+    @PutMapping
     public ResponseEntity<ResponseDTO<Student>> updateUser(@RequestBody UpdateStudentRequestDTO request) {
         try {
             Student user = service.UpdateUser(request);
