@@ -19,8 +19,8 @@ public class ProjectService {
         return repository.save(project);
     }
 
-    public Project updateProject(int id, UpdateProjectRequestDTO request) {
-        Project project = repository.findById(id)
+    public Project updateProject( UpdateProjectRequestDTO request) {
+        Project project = repository.findById(request.getId())
                 .orElseThrow(() -> new CustomException("Project not found"));
 
         project.setName(request.getName());

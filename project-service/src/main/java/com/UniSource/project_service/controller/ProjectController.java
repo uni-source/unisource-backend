@@ -47,10 +47,10 @@ public class ProjectController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ResponseDTO<Project>> updateProject(@PathVariable int id, @RequestBody UpdateProjectRequestDTO updateProjectDTO) {
+    @PutMapping()
+    public ResponseEntity<ResponseDTO<Project>> updateProject( @RequestBody UpdateProjectRequestDTO updateProjectDTO) {
         try {
-            Project updatedProject = service.updateProject(id, updateProjectDTO);
+            Project updatedProject = service.updateProject( updateProjectDTO);
             ResponseDTO<Project> response = new ResponseDTO<>(true, updatedProject, "Project updated successfully");
             return ResponseEntity.ok(response);
         } catch (CustomException e) {
