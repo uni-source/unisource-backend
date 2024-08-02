@@ -23,19 +23,7 @@ public class ProjectController {
     @PostMapping
     public ResponseEntity<ResponseDTO<Project>> createProject(@RequestBody CreateProjectDTO createProjectDTO) {
         try {
-            Project newProject = service.saveProject(Project.build(
-                    0,
-                    createProjectDTO.getName(),
-                    createProjectDTO.getDescription(),
-                    createProjectDTO.getTitle(),
-                    createProjectDTO.getCategory(),
-                    createProjectDTO.getTechnologies(),
-                    createProjectDTO.getResource(),
-                    createProjectDTO.getDueDate(),
-                    createProjectDTO.getStatus(),
-                    createProjectDTO.getOrganizationID(),
-                    createProjectDTO.getMentorID()
-            ));
+            Project newProject = service.saveProject(createProjectDTO);
             ResponseDTO<Project> response = new ResponseDTO<>(true, newProject, "Project added successfully");
             return ResponseEntity.ok(response);
         } catch (CustomException e) {

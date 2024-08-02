@@ -11,7 +11,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateProjectDTO {
-    private int id;
     private String name;
     private String description;
     private String title;
@@ -19,7 +18,6 @@ public class CreateProjectDTO {
     private String technologies;
     private String resource;
     private Date dueDate;
-    private String status;
     private int organizationID;
     private int mentorID;
 

@@ -1,10 +1,13 @@
 package com.UniSource.project_service.service;
 
-import com.UniSource.project_service.dto.UpdateProjectRequestDTO;
+import com.UniSource.project_service.client.MentorClint;
+import com.UniSource.project_service.client.OrganizationClient;
+import com.UniSource.project_service.dto.*;
 import com.UniSource.project_service.entity.Project;
 import com.UniSource.project_service.exception.CustomException;
 import com.UniSource.project_service.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,12 +17,42 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProjectService {
     private final ProjectRepository repository;
-
-    public Project saveProject(Project project) {
+    private final OrganizationClient organizationClient;
+    private final MentorClint mentorClient;
+    public Project saveProject(CreateProjectDTO createProjectDTO) {
+        ResponseEntity<ResponseDTO<OrganizationDetailsDTO>> orgResponse = organizationClient.getUserById(createProjectDTO.getOrganizationID());
+        if (!orgResponse.getStatusCode().is2xxSuccessful() || orgResponse.getBody() == null || !orgResponse.getBody().getSuccess()) {
+            throw new CustomException("Organization not found");
+        }
+        ResponseEntity<ResponseDTO<MentorDetails>> mentorResponse = mentorClient.getMentorById(createProjectDTO.getMentorID());
+        if (!mentorResponse.getStatusCode().is2xxSuccessful() || mentorResponse.getBody() == null || !orgResponse.getBody().getSuccess()) {
+            throw new CustomException("Mentor not found");
+        }
+        Project project =Project.build(
+                0,
+                createProjectDTO.getName(),
+                createProjectDTO.getDescription(),
+                createProjectDTO.getTitle(),
+                createProjectDTO.getCategory(),
+                createProjectDTO.getTechnologies(),
+                createProjectDTO.getResource(),
+                createProjectDTO.getDueDate(),
+                "PENDING",
+                createProjectDTO.getOrganizationID(),
+                createProjectDTO.getMentorID()
+        );
         return repository.save(project);
     }
 
     public Project updateProject( UpdateProjectRequestDTO request) {
+        ResponseEntity<ResponseDTO<OrganizationDetailsDTO>> orgResponse = organizationClient.getUserById(request.getOrganizationID());
+        if (!orgResponse.getStatusCode().is2xxSuccessful() || orgResponse.getBody() == null || !orgResponse.getBody().getSuccess()) {
+            throw new CustomException("Organization not found");
+        }
+        ResponseEntity<ResponseDTO<MentorDetails>> mentorResponse = mentorClient.getMentorById(request.getMentorID());
+        if (!mentorResponse.getStatusCode().is2xxSuccessful() || mentorResponse.getBody() == null || !orgResponse.getBody().getSuccess()) {
+            throw new CustomException("Mentor not found");
+        }
         Project project = repository.findById(request.getId())
                 .orElseThrow(() -> new CustomException("Project not found"));
 
