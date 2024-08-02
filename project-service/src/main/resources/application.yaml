@@ -1,5 +1,7 @@
 spring:
   application:
     name: project-service
+  main:
+    allow-bean-definition-overriding: true
   config:
     import: "optional:configserver:http://localhost:8088"
