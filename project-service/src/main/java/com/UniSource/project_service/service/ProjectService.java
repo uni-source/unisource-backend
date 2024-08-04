@@ -87,6 +87,15 @@ public class ProjectService {
 
 
 
+    public Project updateProjectStatus(UpdateProjectStatusRequestDTO request) {
+        Project project = repository.findById(request.getId())
+                .orElseThrow(() -> new CustomException("Project not found"));
+
+        project.setStatus(request.getStatus());
+
+        return repository.save(project);
+    }
+
 
 
 
