@@ -1,10 +1,12 @@
-package com.UniSource.student_service.client;
+package com.UniSource.organization_service.client;
 
+import com.UniSource.organization_service.dto.RegisterDTO;
+import com.UniSource.organization_service.dto.ResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
@@ -16,4 +18,8 @@ import java.util.Optional;
 public interface IdentityClient {
     @GetMapping("/{id}")
     public Optional<IdentityResponse<User>> getUserById(@PathVariable int id);
+    @PostMapping("/register")
+    public ResponseEntity<ResponseDTO<User>> register(
+            @RequestBody RegisterDTO request
+    );
 }
