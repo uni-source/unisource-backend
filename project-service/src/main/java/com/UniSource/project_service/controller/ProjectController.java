@@ -91,4 +91,28 @@ public class ProjectController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+
+
+
+
+
+    public ResponseEntity<ResponseDTO<Project>> updateProjectStatus(@RequestBody UpdateProjectStatusRequestDTO updateProjectStatusDTO) {
+        try {
+            Project updatedProjectStatus = service.updateProjectStatus(updateProjectStatusDTO);
+            ResponseDTO<Project> response = new ResponseDTO<>(true, updatedProjectStatus, "Project Status updated successfully");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<Project> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<Project> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+
+
+
+
 }
