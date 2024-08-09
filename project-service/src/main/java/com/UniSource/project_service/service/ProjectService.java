@@ -1,6 +1,5 @@
 package com.UniSource.project_service.service;
 
-import com.UniSource.project_service.client.MentorClint;
 import com.UniSource.project_service.client.OrganizationClient;
 import com.UniSource.project_service.dto.*;
 import com.UniSource.project_service.entity.Project;
@@ -9,6 +8,7 @@ import com.UniSource.project_service.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 
 import java.util.List;
 
@@ -96,9 +96,24 @@ public class ProjectService {
         return repository.save(project);
     }
 
+    public List<Project> projectSearchByMentorId(int mentorId) {
+        MentorDetails mentorDetails = mentorClient.getMentorById( mentorId).getBody().getData();
+        if (mentorDetails == null) {
+            throw new CustomException("Mentor not found");
+        }
+        return repository.findAll().stream()
+                .filter(project -> project.getMentorID() == mentorId)
+                .collect(Collectors.toList());
+    }
 
-
-
-
+    public List<Project> projectSearchByOrganizationId(int organizationId) {
+        OrganizationDetailsDTO organizationDetails = organizationClient.getUserById(organizationId).getBody().getData();
+        if (organizationDetails == null) {
+            throw new CustomException("Organization not found");
+        }
+        return repository.findAll().stream()
+                .filter(project -> project.getOrganizationID() == organizationId)
+                .collect(Collectors.toList());
+    }
 
 }

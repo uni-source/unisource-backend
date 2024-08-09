@@ -13,5 +13,7 @@ public class MentorDetails {
     private String name;
     private String email;
     private int organizationId;
+    private String public_id ;
+    private String public_url;
 
 }

@@ -111,6 +111,38 @@ public class ProjectController {
         }
     }
 
+    @GetMapping("/mentor/{mentorId}")
+    public ResponseEntity<ResponseDTO<List<Project>>> projectSearchByMentorId(@PathVariable int mentorId) {
+        try {
+            List<Project> projects = service.projectSearchByMentorId(mentorId);
+            ResponseDTO<List<Project>> response = new ResponseDTO<>(true, projects, "Projects retrieved successfully by Mentor ID");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<Project>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<Project>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    public ResponseEntity<ResponseDTO<List<Project>>> projectSearchByOrganizationId(@PathVariable int organizationId) {
+        try {
+            List<Project> projects = service.projectSearchByOrganizationId(organizationId);
+            ResponseDTO<List<Project>> response = new ResponseDTO<>(true, projects, "Projects retrieved successfully by Organization ID");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<Project>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<Project>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+
+
+
 
 
 
