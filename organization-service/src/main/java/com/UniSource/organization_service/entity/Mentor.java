@@ -16,4 +16,6 @@ public class Mentor {
     private int id;
     private int identityId;
     private int organizationId;
+    private String public_id ;
+    private String public_url;
 }

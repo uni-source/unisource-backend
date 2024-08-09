@@ -20,7 +20,12 @@ public class CloudinaryService {
                 "width", 150
         ));
     }
-
+    public Map uploadMentorImage(byte[] file) throws IOException {
+        return cloudinary.uploader().upload(file, ObjectUtils.asMap(
+                "folder", "uni-source/mentors",
+                "width", 150
+        ));
+    }
     public Map deleteImage(String publicId) throws IOException {
         return cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
     }

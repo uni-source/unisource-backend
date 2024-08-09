@@ -75,7 +75,7 @@ public class OrganizationService {
             }
 
             Organization organization = organizationOpt.get();
-            System.out.println("Student found: " + organization.getIdentityId());
+
 
             if (request.getPublic_id() != null && !request.getPublic_id().isEmpty()) {
                 try {

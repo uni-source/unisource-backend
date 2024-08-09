@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
         name = "organization-service",
         url = "http://localhost:8080"
 )
-public interface MentorClint {
+public interface MentorClient {
     @GetMapping("/api/v1/mentor/{id}")
     public ResponseEntity<ResponseDTO<MentorDetails>> getMentorById(@PathVariable int id);
 }
+
