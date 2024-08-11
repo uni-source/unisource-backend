@@ -75,9 +75,17 @@ public class MentorService {
         }
 
 
-        return new MentorDetails(mentor.getId(), mentor.getIdentityId(), identityResponse.get().getData().getName(), identityResponse.get().getData().getEmail(), mentor.getOrganizationId(),mentor.getPublic_id(),mentor.getPublic_url());
+        return new MentorDetails(mentor.getId(), mentor.getIdentityId(), identityResponse.get().getData().getName(), identityResponse.get().getData().getEmail(),identityResponse.get().getData().getContact(), mentor.getOrganizationId(),mentor.getPublic_id(),mentor.getPublic_url());
     }
-
+    public MentorDetails getMentorByIdentityId(int id) {
+        Mentor mentor = mentorRepository.findByIdentityId(id)
+                .orElseThrow(() -> new CustomException("Mentor not found"));
+        var identityResponse = this.identityClient.getUserById(mentor.getIdentityId());
+        if (identityResponse.isEmpty()) {
+            throw new CustomException("Identity not found for id: " + mentor.getIdentityId());
+        }
+        return new MentorDetails(mentor.getId(), mentor.getIdentityId(), identityResponse.get().getData().getName(), identityResponse.get().getData().getEmail(),identityResponse.get().getData().getContact(), mentor.getOrganizationId(),mentor.getPublic_id(),mentor.getPublic_url());
+    }
     public List<MentorDetails> getAllMentors() {
         List<Mentor> mentors = mentorRepository.findAll();
         return mentors.stream().map(mentor -> {
@@ -85,7 +93,7 @@ public class MentorService {
             if (identityResponse.isEmpty()) {
                 throw new CustomException("Identity not found for id: " + mentor.getIdentityId());
             }
-            return new MentorDetails(mentor.getId(), mentor.getIdentityId(), identityResponse.get().getData().getName(), identityResponse.get().getData().getEmail(), mentor.getOrganizationId(),mentor.getPublic_id(),mentor.getPublic_url());
+            return new MentorDetails(mentor.getId(), mentor.getIdentityId(), identityResponse.get().getData().getName(), identityResponse.get().getData().getEmail(),identityResponse.get().getData().getContact(), mentor.getOrganizationId(),mentor.getPublic_id(),mentor.getPublic_url());
         }).collect(Collectors.toList());
     }
 
@@ -126,7 +134,7 @@ public class MentorService {
             Mentor updatedMentor = mentorRepository.save(mentor);
 
             MentorDetails result = new MentorDetails(
-                    updatedMentor.getId(), updatedMentor.getIdentityId(), identityResponse.get().getData().getName(), identityResponse.get().getData().getEmail(), updatedMentor.getOrganizationId(),updatedMentor.getPublic_id(),updatedMentor.getPublic_url()
+                    updatedMentor.getId(), updatedMentor.getIdentityId(), identityResponse.get().getData().getName(), identityResponse.get().getData().getEmail(),identityResponse.get().getData().getContact(), updatedMentor.getOrganizationId(),updatedMentor.getPublic_id(),updatedMentor.getPublic_url()
             );
 
             return result;
@@ -135,5 +143,27 @@ public class MentorService {
         } catch (Exception e) {
             throw new CustomException("Error retrieving mentor by id: " + request.getIdentityId(), e);
         }
+    }
+    public List<MentorDetails> getMentorsByOrganizationId(int organizationId) {
+        List<Mentor> mentors = mentorRepository.findByOrganizationId(organizationId);
+        if (mentors.isEmpty()) {
+            throw new CustomException("No mentors found for organizationId: " + organizationId);
+        }
+        return mentors.stream().map(mentor -> {
+            var identityResponse = identityClient.getUserById(mentor.getIdentityId());
+            if (identityResponse.isEmpty()) {
+                throw new CustomException("Identity not found for id: " + mentor.getIdentityId());
+            }
+            return new MentorDetails(
+                    mentor.getId(),
+                    mentor.getIdentityId(),
+                    identityResponse.get().getData().getName(),
+                    identityResponse.get().getData().getEmail(),
+                    identityResponse.get().getData().getContact(),
+                    mentor.getOrganizationId(),
+                    mentor.getPublic_id(),
+                    mentor.getPublic_url()
+            );
+        }).collect(Collectors.toList());
     }
 }

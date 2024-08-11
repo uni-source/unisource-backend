@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a32376e4-4ea0-40a8-9b89-b8768e9e3897" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/client/MentorClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/client/Mentor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/dto/createMentorRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/controller/OrganizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/controller/OrganizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/client/OrganizationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/client/OrganizationClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/service/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/controller/MentorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/controller/MentorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/dto/MentorDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/dto/MentorDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/repository/MentorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/repository/MentorRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/service/MentorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/service/MentorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateProjectRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateProjectRequestDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student-service/src/main/java/com/UniSource/student_service/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/student-service/src/main/java/com/UniSource/student_service/controller/StudentController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -38,6 +44,14 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -49,35 +63,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ApiGatewayApplication.executor": "Run",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.IdentityServiceApplication.executor": "Run",
-    "Spring Boot.OrganizationServiceApplication.executor": "Run",
-    "Spring Boot.ServiceRegistryApplication.executor": "Run",
-    "Spring Boot.StudentServiceApplication.executor": "Run",
-    "git-widget-placeholder": "dev-Geenuka",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/GEENUKZ/Desktop/UniSource Community/unisource-backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.IdentityServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.OrganizationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.StudentServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev-Geenuka&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/projects/UniSource/Backend/project-service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -87,17 +101,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="AdminServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="admin-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.UniSource.admin_service.AdminServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.OrganizationServiceApplication">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.UniSource.api_gateway.ApiGatewayApplication" />
       <module name="api-gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.UniSource.api_gateway.ApiGatewayApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.UniSource.api_gateway.*" />
@@ -108,9 +115,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="ConfigServerApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.UniSource.config_server.ConfigServerApplication" />
       <module name="config-server" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.UniSource.config_server.ConfigServerApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.UniSource.config_server.*" />
@@ -121,9 +128,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IdentityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="IdentityServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.UniSource.identity_service.IdentityServiceApplication" />
       <module name="identity-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.UniSource.identity_service.IdentityServiceApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.UniSource.identity_service.*" />
@@ -134,23 +141,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrganizationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="OrganizationServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.UniSource.organization_service.OrganizationServiceApplication" />
       <module name="organization-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.UniSource.organization_service.OrganizationServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.UniSource.organization_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="ProjectServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.UniSource.project_service.ProjectServiceApplication" />
       <module name="project-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.UniSource.project_service.ProjectServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.UniSource.project_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServiceRegistryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="ServiceRegistryApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.unisource.service_registry.ServiceRegistryApplication" />
       <module name="service-registry" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.unisource.service_registry.ServiceRegistryApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.unisource.service_registry.*" />
@@ -161,15 +180,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="StudentServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.UniSource.student_service.StudentServiceApplication" />
       <module name="student-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.UniSource.student_service.StudentServiceApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.UniSource.student_service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="admin-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="admin-service" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

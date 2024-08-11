@@ -68,7 +68,20 @@ public class MentorController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
+    @GetMapping("/identity/{id}")
+    public ResponseEntity<ResponseDTO<MentorDetails>> getMentorByIdentityId(@PathVariable int id) {
+        try {
+            MentorDetails mentor = mentorService.getMentorByIdentityId(id);
+            ResponseDTO<MentorDetails> response = new ResponseDTO<>(true, mentor, "Mentor retrieved successfully");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<MentorDetails> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<MentorDetails> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
     @GetMapping
     public ResponseEntity<ResponseDTO<List<MentorDetails>>> getAllMentors() {
         try {
@@ -100,6 +113,20 @@ public class MentorController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         } catch (Exception e) {
             ResponseDTO<MentorDetails> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+    @GetMapping("/organization/{organizationId}")
+    public ResponseEntity<ResponseDTO<List<MentorDetails>>> getMentorsByOrganizationId(@PathVariable int organizationId) {
+        try {
+            List<MentorDetails> mentors = mentorService.getMentorsByOrganizationId(organizationId);
+            ResponseDTO<List<MentorDetails>> response = new ResponseDTO<>(true, mentors, "Mentors retrieved successfully");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<MentorDetails>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<MentorDetails>> response = new ResponseDTO<>(false, null, e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
