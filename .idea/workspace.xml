@@ -5,20 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a32376e4-4ea0-40a8-9b89-b8768e9e3897" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/client/Mentor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/dto/createMentorRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/client/StudentClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/StudentHasProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/CreateStudentHasProjectDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/StudentDetailsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/StudentHasProjectResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateRecommendationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateStatusDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/entity/StudentHasProject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/repository/StudentHasProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/service/StudentHasProjectService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/client/OrganizationClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/client/OrganizationClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/service/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/java/com/UniSource/identity_service/service/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/controller/MentorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/controller/MentorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/dto/MentorDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/dto/MentorDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/repository/MentorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/repository/MentorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/service/MentorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/main/java/com/UniSource/organization_service/service/MentorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/gateway-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/gateway-service.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateProjectRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateProjectRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/service/ProjectService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

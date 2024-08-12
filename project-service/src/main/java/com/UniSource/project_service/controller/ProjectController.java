@@ -96,7 +96,7 @@ public class ProjectController {
 
 
 
-
+    @PutMapping("/change-status")
     public ResponseEntity<ResponseDTO<Project>> updateProjectStatus(@RequestBody UpdateProjectStatusRequestDTO updateProjectStatusDTO) {
         try {
             Project updatedProjectStatus = service.updateProjectStatus(updateProjectStatusDTO);
