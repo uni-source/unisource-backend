@@ -56,3 +56,11 @@ spring:
             - Path=/api/v1/project/**
           filters:
             - AuthenticationFilter
+
+
+        - id: student-has-project-service
+          uri: lb:http://PROJECT-SERVICE
+          predicates:
+            - Path=/api/v1/student-has-project/**
+          filters:
+            - AuthenticationFilter

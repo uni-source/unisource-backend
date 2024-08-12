@@ -18,7 +18,6 @@ public class UpdateProjectRequestDTO {
     private String technologies;
     private String resource;
     private Date dueDate;
-    private String status;
     private int organizationID;
     private int mentorID;
 

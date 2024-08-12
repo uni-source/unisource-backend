@@ -1,5 +1,6 @@
 package com.UniSource.project_service.service;
 
+import com.UniSource.project_service.client.MentorClient;
 import com.UniSource.project_service.client.OrganizationClient;
 import com.UniSource.project_service.dto.*;
 import com.UniSource.project_service.entity.Project;
@@ -18,7 +19,7 @@ import java.util.List;
 public class ProjectService {
     private final ProjectRepository repository;
     private final OrganizationClient organizationClient;
-    private final MentorClint mentorClient;
+    private final MentorClient mentorClient;
     public Project saveProject(CreateProjectDTO createProjectDTO) {
         ResponseEntity<ResponseDTO<OrganizationDetailsDTO>> orgResponse = organizationClient.getUserById(createProjectDTO.getOrganizationID());
         if (!orgResponse.getStatusCode().is2xxSuccessful() || orgResponse.getBody() == null || !orgResponse.getBody().getSuccess()) {
@@ -63,7 +64,6 @@ public class ProjectService {
         project.setTechnologies(request.getTechnologies());
         project.setResource(request.getResource());
         project.setDueDate(request.getDueDate());
-        project.setStatus(request.getStatus());
         project.setOrganizationID(request.getOrganizationID());
         project.setMentorID(request.getMentorID());
 

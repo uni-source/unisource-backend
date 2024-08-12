@@ -96,7 +96,7 @@ public class ProjectController {
 
 
 
-
+    @PutMapping("/change-status")
     public ResponseEntity<ResponseDTO<Project>> updateProjectStatus(@RequestBody UpdateProjectStatusRequestDTO updateProjectStatusDTO) {
         try {
             Project updatedProjectStatus = service.updateProjectStatus(updateProjectStatusDTO);
@@ -125,7 +125,7 @@ public class ProjectController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
+    @GetMapping("/organization/{organizationId}")
     public ResponseEntity<ResponseDTO<List<Project>>> projectSearchByOrganizationId(@PathVariable int organizationId) {
         try {
             List<Project> projects = service.projectSearchByOrganizationId(organizationId);
