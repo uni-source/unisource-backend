@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a32376e4-4ea0-40a8-9b89-b8768e9e3897" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/client/StudentClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/StudentHasProjectController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/CreateStudentHasProjectDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/StudentDetailsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/StudentHasProjectResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateRecommendationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/dto/UpdateStatusDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/entity/StudentHasProject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/repository/StudentHasProjectRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/service/StudentHasProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/gateway-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/gateway-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/main/java/com/UniSource/project_service/controller/ProjectController.java" afterDir="false" />
-    </list>
+    <list default="true" id="a32376e4-4ea0-40a8-9b89-b8768e9e3897" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
