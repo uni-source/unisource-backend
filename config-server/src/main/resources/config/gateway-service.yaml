@@ -19,12 +19,19 @@ spring:
             - Path=/api/v1/auth/**
 
 
-        - id: organization-service
+        - id: organization-service-organization
           uri: lb:http://ORGANIZATION-SERVICE
           predicates:
             - Path=/api/v1/organization/**
           filters:
             - AuthenticationFilter
+
+        - id: organization-service-mentor
+          uri: lb:http://ORGANIZATION-SERVICE
+          predicates:
+             - Path=/api/v1/mentor/**
+          filters:
+             - AuthenticationFilter
 
 
         - id: admin-service
@@ -47,5 +54,13 @@ spring:
           uri: lb:http://PROJECT-SERVICE
           predicates:
             - Path=/api/v1/project/**
+          filters:
+            - AuthenticationFilter
+
+
+        - id: student-has-project-service
+          uri: lb:http://PROJECT-SERVICE
+          predicates:
+            - Path=/api/v1/student-has-project/**
           filters:
             - AuthenticationFilter

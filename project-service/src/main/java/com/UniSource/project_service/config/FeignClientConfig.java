@@ -1,14 +1,14 @@
-package com.UniSource.student_service;
+package com.UniSource.project_service.config;
 
-import com.UniSource.student_service.client.TokenExtractor;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 @Configuration
 public class FeignClientConfig {
-    private final TokenExtractor tokenProvider; // or TokenExtractor
+    private final TokenExtractor tokenProvider;
 
     @Autowired
     public FeignClientConfig(TokenExtractor tokenProvider) {
@@ -20,7 +20,7 @@ public class FeignClientConfig {
         return new RequestInterceptor() {
             @Override
             public void apply(RequestTemplate template) {
-                String token = tokenProvider.extractToken(); // or tokenExtractor.extractToken()
+                String token = tokenProvider.extractToken();
                 if (token != null) {
                     template.header("Authorization", "Bearer " + token);
                 }
