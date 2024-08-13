@@ -71,7 +71,7 @@ public class StudentController {
             request.setIdentityId(identityId);
 
             StudentDetailsDTO user = service.UpdateProfileImage(request);
-            ResponseDTO<StudentDetailsDTO> response = new ResponseDTO<>(true, user, "Student updated successfully");
+            ResponseDTO<StudentDetailsDTO> response = new ResponseDTO<>(true, user, "Student Profile Image updated Successfully");
             return ResponseEntity.ok(response);
         } catch (CustomException e) {
             ResponseDTO<StudentDetailsDTO> response = new ResponseDTO<>(false, null, e.getMessage());

@@ -13,8 +13,8 @@
         <module name="student-service" />
         <module name="identity-service" />
         <module name="project-service" />
-        <module name="admin-service" />
         <module name="service-registry" />
+        <module name="admin-service" />
       </profile>
     </annotationProcessing>
   </component>

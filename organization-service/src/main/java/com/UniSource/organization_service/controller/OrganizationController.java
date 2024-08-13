@@ -71,7 +71,7 @@ public class OrganizationController {
             request.setIdentityId(identityId);
 
             OrganizationDetailsDTO user = service.UpdateProfileImage(request);
-            ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(true, user, "Student updated successfully");
+            ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(true, user, "Organization Profile Image updated Successfully");
             return ResponseEntity.ok(response);
         } catch (CustomException e) {
             ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(false, null, e.getMessage());
