@@ -32,8 +32,7 @@ public class AuthenticationController {
                     request.getName(),
                     request.getEmail(),
                     request.getRole(),
-                    passwordEncoder.encode(request.getPassword()),
-                    ""
+                    passwordEncoder.encode(request.getPassword())
             ));
             ResponseDTO<User> response = new ResponseDTO<>(true, user, "User registered is successfully");
             return ResponseEntity.ok(response);
@@ -41,7 +40,7 @@ public class AuthenticationController {
             ResponseDTO<User> response = new ResponseDTO<>(false, null, e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         } catch (Exception e) {
-            ResponseDTO<User> response = new ResponseDTO<>(false, null, e.getMessage());
+            ResponseDTO<User> response = new ResponseDTO<>(false, null, "An unexpected error occurred");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
@@ -62,5 +61,4 @@ public class AuthenticationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
 }
