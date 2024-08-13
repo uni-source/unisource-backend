@@ -1,4 +1,4 @@
-package com.UniSource.identity_service.config;
+package com.UniSource.student_service.client;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
