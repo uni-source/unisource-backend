@@ -60,6 +60,19 @@ public class StudentHasProjectService {
         return mapToResponseDTO(studentHasProject);
     }
 
+    public List<StudentHasProjectResponseDTO> getProjectsByStudentId(int studentId) {
+        List<StudentHasProject> studentHasProjects = repository.findByStudentId(studentId);
+        if (studentHasProjects.isEmpty()) {
+            throw new CustomException("No projects found for this student");
+        }
+        return studentHasProjects.stream().map(this::mapToResponseDTO).collect(Collectors.toList());
+    }
+
+    public StudentHasProjectResponseDTO getProjectByProjectId(int projectId) {
+        StudentHasProject studentHasProject = repository.findByProjectId(projectId)
+                .orElseThrow(() -> new CustomException("Project not found"));
+        return mapToResponseDTO(studentHasProject);
+    }
     private StudentHasProjectResponseDTO mapToResponseDTO(StudentHasProject studentHasProject) {
         ResponseEntity<ResponseDTO<StudentDetailsDTO>> studentResponse = studentClient.getUserById(studentHasProject.getStudentId());
         if (!studentResponse.getStatusCode().is2xxSuccessful() || studentResponse.getBody() == null || !studentResponse.getBody().getSuccess()) {
