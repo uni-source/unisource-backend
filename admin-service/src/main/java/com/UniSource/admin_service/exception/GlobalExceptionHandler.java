@@ -1,7 +1,7 @@
 package com.UniSource.admin_service.exception;
 
 
-import com.UniSource.organization_service.dto.ResponseDTO;
+import com.UniSource.admin_service.dto.ResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

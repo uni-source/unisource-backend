@@ -87,4 +87,33 @@ public class StudentHasProjectController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<ResponseDTO<List<StudentHasProjectResponseDTO>>> getProjectsByStudentId(@PathVariable int studentId) {
+        try {
+            List<StudentHasProjectResponseDTO> studentHasProjects = service.getProjectsByStudentId(studentId);
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(true, studentHasProjects, "Projects retrieved successfully for student");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @GetMapping("/project/{projectId}")
+    public ResponseEntity<ResponseDTO<StudentHasProjectResponseDTO>> getProjectByProjectId(@PathVariable int projectId) {
+        try {
+            StudentHasProjectResponseDTO studentHasProject = service.getProjectByProjectId(projectId);
+            ResponseDTO<StudentHasProjectResponseDTO> response = new ResponseDTO<>(true, studentHasProject, "Project retrieved successfully by projectId");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<StudentHasProjectResponseDTO> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<StudentHasProjectResponseDTO> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
 }
