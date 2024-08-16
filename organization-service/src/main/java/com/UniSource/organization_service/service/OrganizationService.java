@@ -2,6 +2,7 @@ package com.UniSource.organization_service.service;
 
 
 import com.UniSource.organization_service.client.IdentityClient;
+import com.UniSource.organization_service.dto.IsVerifyDTO;
 import com.UniSource.organization_service.dto.OrganizationDetailsDTO;
 import com.UniSource.organization_service.dto.UpdateOrganizationRequestDTO;
 import com.UniSource.organization_service.dto.imageRequestDTO;
@@ -75,7 +76,7 @@ public class OrganizationService {
             }
 
             Organization organization = organizationOpt.get();
-            System.out.println("Student found: " + organization.getIdentityId());
+
 
             if (request.getPublic_id() != null && !request.getPublic_id().isEmpty()) {
                 try {
@@ -116,6 +117,27 @@ public class OrganizationService {
         } catch (Exception e) {
             throw new CustomException("Error retrieving organization by id: " + request.getIdentityId(), e);
         }
+
+    }
+
+    public Organization isVerify(IsVerifyDTO request){
+        try {
+            var identityResponse = this.identityClient.getUserById(request.getAdminIdentityId());
+            if (identityResponse.isEmpty()) {
+                throw new CustomException("Identity not found for id: " + request.getAdminIdentityId());
+            }
+            if (!"ADMIN".equals(identityResponse.get().getData().getRole().toString())){
+                throw new CustomException("Unauthorized Access");
+            }
+            Organization organization = repository.findById(request.getOrganizationId())
+                    .orElseThrow(() -> new CustomException("Organization not found"));
+            organization.setVerified( organization.isVerified());
+            return repository.save(organization);
+        }
+        catch (Exception e){
+            throw new CustomException(e.getMessage());
+        }
+
     }
 }
 

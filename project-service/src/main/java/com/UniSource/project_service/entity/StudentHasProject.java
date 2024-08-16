@@ -1,4 +1,4 @@
-package com.UniSource.organization_service.entity;
+package com.UniSource.project_service.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,13 +9,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
-@Table(name="_mentor")
-public class Mentor {
+@Table(name = "student_has_project")
+public class StudentHasProject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int identityId;
-    private int organizationId;
-    private String public_id ;
-    private String public_url;
+
+    private int studentId;
+
+    private int projectId;
+
+    private String status;
+
+    private String recommendation;
 }

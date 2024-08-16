@@ -71,7 +71,7 @@ public class OrganizationController {
             request.setIdentityId(identityId);
 
             OrganizationDetailsDTO user = service.UpdateProfileImage(request);
-            ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(true, user, "Student updated successfully");
+            ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(true, user, "Organization Profile Image updated Successfully");
             return ResponseEntity.ok(response);
         } catch (CustomException e) {
             ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(false, null, e.getMessage());
@@ -81,5 +81,18 @@ public class OrganizationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-    // place organization verify method here
+    @PutMapping("/organization-verify")
+    public ResponseEntity<ResponseDTO<Organization>> OrganizationVerification(@RequestBody IsVerifyDTO request) {
+        try {
+            Organization user = service.isVerify(request);
+            ResponseDTO<Organization> response = new ResponseDTO<>(true, user, "Organization Verified successfully");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<Organization> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<Organization> response = new ResponseDTO<>(false, null,  e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.UniSource.organization_service.dto;
+package com.UniSource.admin_service.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,14 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MentorDetails {
+public class User {
     private int id;
-    private int identityId;
     private String name;
     private String email;
+    private String role;
+    private String password;
     private String contact;
-    private int organizationId;
-    private String public_id ;
-    private String public_url;
-
 }
