@@ -97,7 +97,7 @@ public class ProjectController {
 
 
     @PutMapping("/change-status")
-    public ResponseEntity<ResponseDTO<Project>> updateProjectStatus(@RequestBody UpdateProjectStatusRequestDTO updateProjectStatusDTO) {
+    public ResponseEntity<ResponseDTO<Project>> updateProjectStatus(@RequestBody UpdateProjectStatusRequestDTO updateProjectStatusDTO){
         try {
             Project updatedProjectStatus = service.updateProjectStatus(updateProjectStatusDTO);
             ResponseDTO<Project> response = new ResponseDTO<>(true, updatedProjectStatus, "Project Status updated successfully");

@@ -12,8 +12,10 @@ import com.UniSource.student_service.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -49,7 +51,7 @@ public class StudentService {
             StudentDetailsDTO result = StudentDetailsDTO.build(
                     identityResponse.get().getData().getName(),
                     identityResponse.get().getData().getEmail(),
-                    student.get().isVerified(),
+                    student.get().isVerifiedStudent(),
                     student.get().getScore(),
                     student.get().getDescription(),
                     student.get().getPublic_id(),
@@ -108,7 +110,7 @@ public class StudentService {
             StudentDetailsDTO result = StudentDetailsDTO.build(
                     identityResponse.get().getData().getName(),
                     identityResponse.get().getData().getEmail(),
-                    student.isVerified(),
+                    student.isVerifiedStudent(),
                     student.getScore(),
                     student.getDescription(),
                     updatedStudent.getPublic_id(),
@@ -124,6 +126,28 @@ public class StudentService {
             throw new CustomException("Error retrieving student by id: " + request.getIdentityId(), e);
         }
     }
+    public List<StudentDetailsDTO> getAllStudents() {
+        List<Student> students = repository.findAll();
+
+        return students.stream().map(student -> {
+            var identityResponse = this.identityClient.getUserById(student.getIdentityId());
+            if (identityResponse.isEmpty()) {
+                throw new CustomException("Identity not found for id: " + student.getIdentityId());
+            }
+
+            return StudentDetailsDTO.build(
+                    identityResponse.get().getData().getName(),
+                    identityResponse.get().getData().getEmail(),
+                    student.isVerifiedStudent(),
+                    student.getScore(),
+                    student.getDescription(),
+                    student.getPublic_id(),
+                    student.getPublic_url(),
+                    identityResponse.get().getData().getId(),
+                    identityResponse.get().getData().getContact()
+            );
+        }).collect(Collectors.toList());
+    }
     public Student UpdateScore(UpdateScoreRequestDTO request) {
         Student student = repository.findByIdentityId(request.getIdentityId())
                 .orElseThrow(() -> new CustomException("User not found"));
@@ -133,6 +157,7 @@ public class StudentService {
         return repository.save(student);
     }
     public Student isVerify(IsVerifyDTO request){
+        System.out.println(request.toString());
         try {
             var identityResponse = this.identityClient.getUserById(request.getAdminIdentityId());
             if (identityResponse.isEmpty()) {
@@ -141,9 +166,9 @@ public class StudentService {
             if (!"ADMIN".equals(identityResponse.get().getData().getRole().toString())){
                 throw new CustomException("Unauthorized Access");
             }
-            Student student = repository.findById(request.getStudentId())
+            Student student = repository.findByIdentityId(request.getStudentId())
                     .orElseThrow(() -> new CustomException("Student not found"));
-            student.setVerified(student.isVerified());
+            student.setVerifiedStudent(request.isVerifiedStudent());
             return repository.save(student);
         }
         catch (Exception e){

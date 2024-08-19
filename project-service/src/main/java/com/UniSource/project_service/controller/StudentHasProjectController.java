@@ -116,4 +116,34 @@ public class StudentHasProjectController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+    @GetMapping("/organization/{organizationId}")
+    public ResponseEntity<ResponseDTO<List<StudentHasProjectResponseDTO>>> getProjectsByOrganizationId(@PathVariable int organizationId) {
+        try {
+            List<StudentHasProjectResponseDTO> studentHasProjects = service.getProjectsByOrganizationId(organizationId);
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(true, studentHasProjects, "Projects retrieved successfully for organization");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+
+    @GetMapping("/mentor/{mentorId}")
+    public ResponseEntity<ResponseDTO<List<StudentHasProjectResponseDTO>>> getProjectsByMentorId(@PathVariable int mentorId) {
+        try {
+            List<StudentHasProjectResponseDTO> studentHasProjects = service.getProjectsByMentorId(mentorId);
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(true, studentHasProjects, "Projects retrieved successfully for mentor");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<StudentHasProjectResponseDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
 }

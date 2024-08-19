@@ -30,17 +30,22 @@ public class ProposalService {
                 dto.getStudentId(),
                 dto.getProjectId(),
                 publicId,
-                publicUrl
+                publicUrl,
+                dto.getOrganizationId(),
+                dto.getMentorId()
         );
         return repository.save(proposal);
     }
 
     public Proposal updateStatus(UpdateProposalStatusDTO dto) {
+        System.out.println("Updating proposal with id: " + dto.getId());
         Proposal proposal = repository.findById(dto.getId())
                 .orElseThrow(() -> new CustomException("Proposal not found"));
+        System.out.println("Found proposal: " + proposal);
         proposal.setStatus(dto.getStatus());
         return repository.save(proposal);
     }
+
 
     public ProposalDetailsDTO getProposalById(int id) {
         Proposal proposal = repository.findById(id)
@@ -62,6 +67,16 @@ public class ProposalService {
 
     public List<ProposalDetailsDTO> getProposalsByProjectId(int projectId) {
         return repository.findByProjectId(projectId).stream()
+                .map(this::mapToProposalDetailsDTO)
+                .collect(Collectors.toList());
+    }
+    public List<ProposalDetailsDTO> getProposalsByOrganizationId(int organizationId) {
+        return repository.findByOrganizationId(organizationId).stream()
+                .map(this::mapToProposalDetailsDTO)
+                .collect(Collectors.toList());
+    }
+    public List<ProposalDetailsDTO> getProposalsByMentorId(int mentorId) {
+        return repository.findByMentorId(mentorId).stream()
                 .map(this::mapToProposalDetailsDTO)
                 .collect(Collectors.toList());
     }

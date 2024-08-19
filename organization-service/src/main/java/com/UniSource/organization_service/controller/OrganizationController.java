@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/organization")
 @RequiredArgsConstructor
@@ -70,14 +72,28 @@ public class OrganizationController {
             request.setPublic_id(publicId);
             request.setIdentityId(identityId);
 
-            OrganizationDetailsDTO user = service.UpdateProfileImage(request);
-            ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(true, user, "Organization Profile Image updated Successfully");
+            OrganizationDetailsDTO organization = service.UpdateProfileImage(request);
+            ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(true, organization, "Organization Profile Image updated Successfully");
             return ResponseEntity.ok(response);
         } catch (CustomException e) {
             ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(false, null, e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         } catch (Exception e) {
             ResponseDTO<OrganizationDetailsDTO> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+    @GetMapping
+    public ResponseEntity<ResponseDTO<List<OrganizationDetailsDTO>>> getAllOrganizations() {
+        try {
+            List<OrganizationDetailsDTO> organizations = service.getAllOrganizations();
+            ResponseDTO<List<OrganizationDetailsDTO>> response = new ResponseDTO<>(true, organizations, "Organizations retrieved successfully");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<OrganizationDetailsDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<OrganizationDetailsDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }

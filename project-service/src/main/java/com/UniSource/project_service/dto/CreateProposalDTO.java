@@ -16,4 +16,6 @@ public class CreateProposalDTO {
     private int studentId;
     private int projectId;
     private MultipartFile file;
+    private int organizationId;
+    private int mentorId;
 }

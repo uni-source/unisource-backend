@@ -32,7 +32,9 @@ public class StudentHasProjectService {
                 studentResponse.getBody().getData().getIdentityId(),
                 project.getId(),
                 "PROCESS",
-                ""
+                "",
+                dto.getOrganizationId(),
+                dto.getMentorId()
         );
         return repository.save(studentHasProject);
     }
@@ -72,6 +74,22 @@ public class StudentHasProjectService {
         StudentHasProject studentHasProject = repository.findByProjectId(projectId)
                 .orElseThrow(() -> new CustomException("Project not found"));
         return mapToResponseDTO(studentHasProject);
+    }
+
+    public List<StudentHasProjectResponseDTO> getProjectsByOrganizationId(int organizationId) {
+        List<StudentHasProject> studentHasProjects = repository.findByOrganizationId(organizationId);
+        if (studentHasProjects.isEmpty()) {
+            throw new CustomException("No projects found for this organization");
+        }
+        return studentHasProjects.stream().map(this::mapToResponseDTO).collect(Collectors.toList());
+    }
+
+    public List<StudentHasProjectResponseDTO> getProjectsByMentorId(int mentorId) {
+        List<StudentHasProject> studentHasProjects = repository.findByMentorId(mentorId);
+        if (studentHasProjects.isEmpty()) {
+            throw new CustomException("No projects found for this mentor");
+        }
+        return studentHasProjects.stream().map(this::mapToResponseDTO).collect(Collectors.toList());
     }
     private StudentHasProjectResponseDTO mapToResponseDTO(StudentHasProject studentHasProject) {
         ResponseEntity<ResponseDTO<StudentDetailsDTO>> studentResponse = studentClient.getUserById(studentHasProject.getStudentId());

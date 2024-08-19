@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Student {
     private int id;
-    private boolean isVerified;
+    private boolean verifiedStudent;
     private int score;
     private String description;
     private int identityId;
