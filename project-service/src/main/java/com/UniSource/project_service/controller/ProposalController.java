@@ -54,7 +54,7 @@ public class ProposalController {
     }
 
     @PutMapping("/update-status")
-    public ResponseEntity<ResponseDTO<Proposal>> updateStatus(UpdateProposalStatusDTO dto) {
+    public ResponseEntity<ResponseDTO<Proposal>> updateStatus(@RequestBody UpdateProposalStatusDTO dto) {
         try {
             Proposal updatedProposal = service.updateStatus(dto);
             ResponseDTO<Proposal> response = new ResponseDTO<>(true, updatedProposal, "Status updated successfully");
@@ -111,6 +111,28 @@ public class ProposalController {
     public ResponseEntity<ResponseDTO<List<ProposalDetailsDTO>>> getProposalsByProjectId(@PathVariable int projectId) {
         try {
             List<ProposalDetailsDTO> proposals = service.getProposalsByProjectId(projectId);
+            ResponseDTO<List<ProposalDetailsDTO>> response = new ResponseDTO<>(true, proposals, "Proposals for project retrieved successfully");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            ResponseDTO<List<ProposalDetailsDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+    @GetMapping("/organization/{organizationId}")
+    public ResponseEntity<ResponseDTO<List<ProposalDetailsDTO>>> getProposalsByOrganizationId(@PathVariable int organizationId) {
+        try {
+            List<ProposalDetailsDTO> proposals = service.getProposalsByOrganizationId(organizationId);
+            ResponseDTO<List<ProposalDetailsDTO>> response = new ResponseDTO<>(true, proposals, "Proposals for project retrieved successfully");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            ResponseDTO<List<ProposalDetailsDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
+    @GetMapping("/mentor/{mentorId}")
+    public ResponseEntity<ResponseDTO<List<ProposalDetailsDTO>>> getProposalsByMentorId(@PathVariable int mentorId) {
+        try {
+            List<ProposalDetailsDTO> proposals = service.getProposalsByMentorId(mentorId);
             ResponseDTO<List<ProposalDetailsDTO>> response = new ResponseDTO<>(true, proposals, "Proposals for project retrieved successfully");
             return ResponseEntity.ok(response);
         } catch (Exception e) {

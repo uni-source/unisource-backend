@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class StudentDetailsDTO {
     private String name;
     private String email;
-    private boolean isVerified;
+    private boolean verifiedStudent;
     private int score;
     private String description;
     private String public_id;

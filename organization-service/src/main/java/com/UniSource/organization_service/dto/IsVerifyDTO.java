@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class IsVerifyDTO {
     private int adminIdentityId;
     private int organizationId;
-    private boolean isVerify;
+    private boolean verifiedOrganization;
 }

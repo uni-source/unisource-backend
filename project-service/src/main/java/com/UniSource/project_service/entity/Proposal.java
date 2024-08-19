@@ -28,4 +28,6 @@ public class Proposal {
     private String publicId;
 
     private String publicUrl;
+    private int organizationId;
+    private int mentorId;
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Organization {
     private int id;
-    private boolean isVerified;
+    private boolean verifiedOrganization;
     private String description;
     private int identityId;
 }

@@ -22,4 +22,6 @@ public class StudentHasProject {
     private String status;
 
     private String recommendation;
+    private int organizationId;
+    private int mentorId;
 }

@@ -12,7 +12,7 @@ public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private boolean isVerified;
+    private boolean verifiedOrganization;
     private String description;
     private int identityId;
     private String public_id;

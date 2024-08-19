@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/student")
 @RequiredArgsConstructor
@@ -81,7 +83,20 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
-
+    @GetMapping
+    public ResponseEntity<ResponseDTO<List<StudentDetailsDTO>>> getAllStudents() {
+        try {
+            List<StudentDetailsDTO> students = service.getAllStudents();
+            ResponseDTO<List<StudentDetailsDTO>> response = new ResponseDTO<>(true, students, "All students retrieved successfully");
+            return ResponseEntity.ok(response);
+        } catch (CustomException e) {
+            ResponseDTO<List<StudentDetailsDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        } catch (Exception e) {
+            ResponseDTO<List<StudentDetailsDTO>> response = new ResponseDTO<>(false, null, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
     @PutMapping("/score")
     public ResponseEntity<ResponseDTO<Student>> updateScore(@RequestBody UpdateScoreRequestDTO request) {
         try {
@@ -110,6 +125,11 @@ public class StudentController {
             ResponseDTO<Student> response = new ResponseDTO<>(false, null,  e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+    }
+    @PostMapping("/test-is-verify")
+    public ResponseEntity<IsVerifyDTO> testIsVerify(@RequestBody IsVerifyDTO dto) {
+        System.out.println("Received DTO: " + dto);
+        return ResponseEntity.ok(dto);
     }
 
 }

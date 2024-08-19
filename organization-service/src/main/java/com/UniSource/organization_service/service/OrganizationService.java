@@ -12,8 +12,10 @@ import com.UniSource.organization_service.repository.OrganizationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -47,7 +49,7 @@ public class OrganizationService {
             OrganizationDetailsDTO result = OrganizationDetailsDTO.build(
                     identityResponse.get().getData().getName(),
                     identityResponse.get().getData().getEmail(),
-                    organization.get().isVerified(),
+                    organization.get().isVerifiedOrganization(),
                     organization.get().getDescription(),
                     organization.get().getPublic_id(),
                     organization.get().getPublic_url(),
@@ -62,6 +64,34 @@ public class OrganizationService {
             throw new CustomException("Error retrieving organization by id: " + id, e);
         }
 
+    }
+    public List<OrganizationDetailsDTO> getAllOrganizations() throws CustomException {
+        try {
+            List<Organization> organizations = repository.findAll();
+
+            return organizations.stream().map(organization -> {
+                var identityResponse = identityClient.getUserById(organization.getIdentityId());
+                if (identityResponse.isEmpty()) {
+                    throw new CustomException("Identity not found for id: " + organization.getIdentityId());
+                }
+
+                return OrganizationDetailsDTO.build(
+                        identityResponse.get().getData().getName(),
+                        identityResponse.get().getData().getEmail(),
+                        organization.isVerifiedOrganization(),
+                        organization.getDescription(),
+                        organization.getPublic_id(),
+                        organization.getPublic_url(),
+                        identityResponse.get().getData().getId(),
+                        identityResponse.get().getData().getContact()
+                );
+            }).collect(Collectors.toList());
+
+        } catch (CustomException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new CustomException("Error retrieving all organizations", e);
+        }
     }
     public OrganizationDetailsDTO UpdateProfileImage(imageRequestDTO request) {
         try {
@@ -103,7 +133,7 @@ public class OrganizationService {
             OrganizationDetailsDTO result = OrganizationDetailsDTO.build(
                     identityResponse.get().getData().getName(),
                     identityResponse.get().getData().getEmail(),
-                    organization.isVerified(),
+                    organization.isVerifiedOrganization(),
                     organization.getDescription(),
                     updatedStudent.getPublic_id(),
                     updatedStudent.getPublic_url(),
@@ -129,9 +159,9 @@ public class OrganizationService {
             if (!"ADMIN".equals(identityResponse.get().getData().getRole().toString())){
                 throw new CustomException("Unauthorized Access");
             }
-            Organization organization = repository.findById(request.getOrganizationId())
+            Organization organization = repository.findByIdentityId(request.getOrganizationId())
                     .orElseThrow(() -> new CustomException("Organization not found"));
-            organization.setVerified( organization.isVerified());
+            organization.setVerifiedOrganization( request.isVerifiedOrganization());
             return repository.save(organization);
         }
         catch (Exception e){

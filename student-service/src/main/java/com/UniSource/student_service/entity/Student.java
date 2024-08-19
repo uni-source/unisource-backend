@@ -12,7 +12,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private boolean isVerified;
+    private boolean verifiedStudent;
     private int score;
     private String description;
     private int identityId;

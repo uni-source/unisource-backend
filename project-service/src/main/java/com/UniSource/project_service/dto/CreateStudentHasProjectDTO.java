@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class CreateStudentHasProjectDTO {
     private int studentId;
     private int projectId;
+    private int organizationId;
+    private int mentorId;
 }
