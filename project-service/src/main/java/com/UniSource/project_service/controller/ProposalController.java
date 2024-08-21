@@ -30,7 +30,9 @@ public class ProposalController {
             @RequestParam("submissionDate") LocalDate submissionDate,
             @RequestParam("studentId") int studentId,
             @RequestParam("projectId") int projectId,
-            @RequestPart("file") MultipartFile file) {
+            @RequestPart("file") MultipartFile file,
+            @RequestParam("organizationId") int organizationId,
+            @RequestParam("mentorId") int mentorId) {
 
         try {
             Map<String, String> uploadResult = cloudinaryService.uploadImage(file.getBytes());
@@ -43,6 +45,8 @@ public class ProposalController {
             dto.setStudentId(studentId);
             dto.setProjectId(projectId);
             dto.setFile(file);
+            dto.setOrganizationId(organizationId);
+            dto.setMentorId(mentorId);
 
             Proposal newProposal = service.createProposal(dto, publicId, publicUrl);
             ResponseDTO<Proposal> response = new ResponseDTO<>(true, newProposal, "Proposal created successfully");
@@ -52,6 +56,7 @@ public class ProposalController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
 
     @PutMapping("/update-status")
     public ResponseEntity<ResponseDTO<Proposal>> updateStatus(@RequestBody UpdateProposalStatusDTO dto) {
