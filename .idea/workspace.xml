@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a32376e4-4ea0-40a8-9b89-b8768e9e3897" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,43 +49,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AdminServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.IdentityServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.OrganizationServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProjectServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.StudentServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.IdentityServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.OrganizationServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.StudentServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev-avindu&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/projects/UniSource/unisource-backend/admin-service/src/main/java/com/UniSource/admin_service&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AdminServiceApplication.executor": "Run",
+    "Application.ApiGatewayApplication.executor": "Run",
+    "Application.ConfigServerApplication.executor": "Run",
+    "Application.IdentityServiceApplication.executor": "Run",
+    "Application.OrganizationServiceApplication.executor": "Run",
+    "Application.ProjectServiceApplication.executor": "Run",
+    "Application.ServiceRegistryApplication.executor": "Run",
+    "Application.StudentServiceApplication.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.ConfigServerApplication.executor": "Run",
+    "Spring Boot.IdentityServiceApplication.executor": "Run",
+    "Spring Boot.OrganizationServiceApplication.executor": "Run",
+    "Spring Boot.ServiceRegistryApplication.executor": "Run",
+    "Spring Boot.StudentServiceApplication.executor": "Run",
+    "git-widget-placeholder": "dev-avindu",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Avindu kavinda/Desktop/UniSource Community/unisource-backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\projects\UniSource\unisource-backend\admin-service\src\main\java\com\UniSource\admin_service" />
@@ -107,7 +106,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AdminServiceApplication">
+  <component name="RunManager" selected="Application.StudentServiceApplication">
     <configuration name="AdminServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.UniSource.admin_service.AdminServiceApplication" />
       <module name="admin-service" />
