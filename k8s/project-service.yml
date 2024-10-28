@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-service-app
+  labels:
+    app: project-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app : project-service-app
+  template:
+    metadata:
+      labels:
+        app: project-service-app
+    spec:
+      containers:
+      - name: project-service-app
+        image: reshangayantha/project-service:0.0.1
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8085
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  project-service-svc
+spec:
+  selector:
+    app:  project-service-app
+  ports:
+  - port:  80
+    targetPort:  8085
