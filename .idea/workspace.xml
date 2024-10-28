@@ -5,42 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a32376e4-4ea0-40a8-9b89-b8768e9e3897" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/admin-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config-server/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/identity-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/organization-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-registry/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/student-service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/src/test/java/com/UniSource/admin_service/AdminServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/test/java/com/UniSource/admin_service/AdminServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/test/java/com/UniSource/api_gateway/ApiGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/test/java/com/UniSource/api_gateway/ApiGatewayApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/admin-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/admin-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/gateway-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/gateway-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/identity-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/identity-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/organization-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/organization-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/project-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/project-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/config/student-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/student-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-server/src/test/java/com/UniSource/config_server/ConfigServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/test/java/com/UniSource/config_server/ConfigServerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity-service/src/test/java/com/UniSource/identity_service/IdentityServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/identity-service/src/test/java/com/UniSource/identity_service/IdentityServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization-service/src/test/java/com/UniSource/organization_service/OrganizationServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization-service/src/test/java/com/UniSource/organization_service/OrganizationServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-service/src/test/java/com/UniSource/project_service/ProjectServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-service/src/test/java/com/UniSource/project_service/ProjectServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registry/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-registry/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registry/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/service-registry/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registry/src/test/java/com/unisource/service_registry/ServiceRegistryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-registry/src/test/java/com/unisource/service_registry/ServiceRegistryApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/student-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/student-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/student-service/src/test/java/com/UniSource/student_service/StudentServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/student-service/src/test/java/com/UniSource/student_service/StudentServiceApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
