@@ -1,9 +1,10 @@
 package com.UniSource.identity_service.service;
 
-import com.UniSource.identity_service.client.OrganizationClient;
-import com.UniSource.identity_service.client.StudentClient;
 import com.UniSource.identity_service.config.JwtService;
-import com.UniSource.identity_service.dto.*;
+import com.UniSource.identity_service.dto.LoginDTO;
+import com.UniSource.identity_service.dto.LoginResponseDTO;
+import com.UniSource.identity_service.dto.ResetPasswordRequestDTO;
+import com.UniSource.identity_service.dto.UpdateUserRequestDTO;
 import com.UniSource.identity_service.entity.User;
 import com.UniSource.identity_service.exception.CustomException;
 import com.UniSource.identity_service.repository.UserCredentialRepository;
@@ -15,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -23,38 +23,12 @@ public class AuthenticationService {
     private final UserCredentialRepository repository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final StudentClient studentClient;
-    private final OrganizationClient organizationClient;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     public User saveUser(User user) {
-        if (repository.existsByEmail(user.getEmail())) {
-            throw new CustomException("Email is already taken");
-        }
-        User newUser = repository.save(user);
-        String jwtToken = jwtService.generateToken(newUser);
-
-
-        if ("STUDENT".equals(newUser.getRole().toString())) {
-            try {
-                createStudentDTO createStudentDTO = new createStudentDTO(newUser.getId());
-                studentClient.createStudent(createStudentDTO, "Bearer " + jwtToken);
-            } catch (Exception e) {
-                throw new CustomException(e.getMessage());
-            }
-        }else if("ORGANIZATION".equals(newUser.getRole().toString())) {
-            try {
-                createOrganizationDTO createOrganizationDTO = new createOrganizationDTO(newUser.getId());
-                organizationClient.createOrganization( createOrganizationDTO, "Bearer " + jwtToken);
-            } catch (Exception e) {
-                throw new CustomException(e.getMessage());
-            }
-        }
-//createMentor
-        return newUser;
+        return repository.save(user);
     }
-
 
     public LoginResponseDTO login(LoginDTO request) {
         authenticationManager.authenticate(
@@ -81,7 +55,6 @@ public class AuthenticationService {
                 .orElseThrow(() -> new CustomException("User not found"));
 
         user.setName(userDTO.getName());
-        user.setContact(userDTO.getContact());
         return repository.save(user);
     }
     public User RestPassword( ResetPasswordRequestDTO userDTO) {
