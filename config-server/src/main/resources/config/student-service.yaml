@@ -2,9 +2,14 @@ server:
   port: 8084
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: eureka-0
   client:
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
 
 spring:
   datasource:
@@ -18,3 +23,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0

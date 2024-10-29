@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: organization-service-app
+  labels:
+    app: organization-service-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app : organization-service-app
+  template:
+    metadata:
+      labels:
+        app: organization-service-app
+    spec:
+      containers:
+      - name: organization-service-app
+        image: reshangayantha/organization-service:0.0.1
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8083
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  organization-service-svc
+spec:
+  selector:
+    app:  organization-service-app
+  ports:
+  - port:  80
+    targetPort:  8083
