@@ -9,6 +9,18 @@ eureka:
 spring:
   cloud:
     gateway:
+      globalcors:
+        paths: /**
+        allowedOrigins:
+          - https://uni-source.netlify.app
+        allowedMethods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+          - PATCH
+        allowCredentials: true
       discovery:
         locator:
           enabled: true
